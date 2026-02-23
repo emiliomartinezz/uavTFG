@@ -1,0 +1,100 @@
+version 3
+run General-0-20260223-10:44:05-30125
+attr configname General
+attr datetime 20260223-10:44:05
+attr datetimef 20260223-104405
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network dronestfg.simulations.DronesNetwork
+attr processid 30125
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../../INET/inet/images:../../../VEINS/veins-5.3.1/veins-veins-5.3.1/images:../../../omnetpp-6.0.3/samples/simu5g/images:../../../VEINS/veins-5.3.1/veins-veins-5.3.1/subprojects/veins_inet/images
+config network dronestfg.simulations.DronesNetwork
+config sim-time-limit 4000s
+config repeat 1
+config *.playgroundSizeX 3000m
+config *.playgroundSizeY 3000m
+config *.playgroundSizeZ 500m
+config *.manager.host "\"localhost\""
+config *.manager.port 9999
+config *.manager.updateInterval 1s
+config *.manager.autoShutdown true
+config *.manager.order 1
+config *.manager.moduleType "\"UAV\""
+config *.manager.moduleName "\"uav\""
+config *.gnb.mobility.typename StationaryMobility
+config *.gnb.mobility.initialX 1500m
+config *.gnb.mobility.initialY 1500m
+config *.gnb.mobility.initialZ 25m
+config *.channelControl.pMax 10W
+config *.channelControl.alpha 1.0
+config *.channelControl.carrierFrequency 3.5GHz
+config *.uav[*].macCellId 1
+config *.uav[*].masterId 1
+config *.uav[*].nrMacCellId 1
+config *.uav[*].nrMasterId 1
+config *.uav[*].numApps 1
+config *.uav[*].app[0].typename UdpBasicApp
+config *.uav[*].app[0].destAddresses "\"server\""
+config *.uav[*].app[0].destPort 5000
+config *.uav[*].app[0].messageLength 1000B
+config *.uav[*].app[0].sendInterval 100ms
+config *.uav[*].app[0].startTime "uniform(0s, 1s)"
+config *.server.numApps 1
+config *.server.app[0].typename UdpSink
+config *.server.app[0].localPort 5000
+
+vector 0 DronesNetwork.router.ppp[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 1 DronesNetwork.router.ppp[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 2 DronesNetwork.router.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 3 DronesNetwork.router.ppp[1].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 4 DronesNetwork.router.ppp[1].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 5 DronesNetwork.router.ppp[1].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 6 DronesNetwork.server.ppp[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 7 DronesNet
