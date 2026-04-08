@@ -25,7 +25,8 @@ import simu5g.world.radio.LteChannelControl;
 import simu5g.common.carrierAggregation.CarrierAggregation;
 import simu5g.nodes.NR.gNodeB;
 import simu5g.common.binder.Binder;
-import org.car2x.veins.modules.mobility.traci.TraCIScenarioManagerLaunchd;
+import simu5g.nodes.Upf;
+import org.car2x.veins.modules.mobility.traci.TraCIScenarioManager;
 import dronestfg.nodes.UAV;
 
 network DronesNetwork
@@ -37,7 +38,7 @@ network DronesNetwork
         @display("bgb=995,607");
 
     submodules:
-        manager: TraCIScenarioManagerLaunchd {
+        manager: TraCIScenarioManager {
             parameters:
                 @display("p=50,50");
         }
@@ -66,17 +67,22 @@ network DronesNetwork
             @display("p=700,100;is=s");
         }
 
+        upf: Upf {
+            @display("p=500,250;is=s");
+        }
+
         gnb: gNodeB {
             @display("p=500,400;is=l");
         }
 
         uav[0]: UAV {
             parameters:
-                @display("p=200,200");
+                @display("p=228.52126,211.03876");
         }
 
     connections:
         server.pppg++ <--> {  datarate = 10Gbps; delay = 1ms; } <--> router.pppg++;
-        router.pppg++ <--> {  datarate = 10Gbps; delay = 1ms; } <--> gnb.ppp;
+        router.pppg++ <--> {  datarate = 10Gbps; delay = 1ms; } <--> upf.filterGate;
+        upf.pppg++ <--> {  datarate = 10Gbps; delay = 1ms; } <--> gnb.ppp;
 }
 

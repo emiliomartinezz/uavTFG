@@ -1,9 +1,9 @@
-                                                                
+file 43330 1775637453                                           
 version 3
-run General-0-20260223-10:44:05-30125
+run General-0-20260408-10:33:32-23693
 attr configname General
-attr datetime 20260223-10:44:05
-attr datetimef 20260223-104405
+attr datetime 20260408-10:33:32
+attr datetimef 20260408-103332
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -11,16 +11,15 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network dronestfg.simulations.DronesNetwork
-attr processid 30125
+attr processid 23693
 attr repetition 0
 attr replication #0
 attr resultdir results
 attr runnumber 0
 attr seedset 0
-config image-path ../../../INET/inet/images:../../../VEINS/veins-5.3.1/veins-veins-5.3.1/images:../../../omnetpp-6.0.3/samples/simu5g/images:../../../VEINS/veins-5.3.1/veins-veins-5.3.1/subprojects/veins_inet/images
+config image-path ../../../INET/inet/images:../../../VEINS/veins-5.3.1/veins-veins-5.3.1/images:../../../omnetpp-6.0.3/samples/simu5g/images:../../../VEINS/veins-5.3.1/veins_inet/images
 config network dronestfg.simulations.DronesNetwork
 config sim-time-limit 4000s
-config repeat 1
 config *.playgroundSizeX 3000m
 config *.playgroundSizeY 3000m
 config *.playgroundSizeZ 500m
@@ -29,7 +28,7 @@ config *.manager.port 9999
 config *.manager.updateInterval 1s
 config *.manager.autoShutdown true
 config *.manager.order 1
-config *.manager.moduleType "\"UAV\""
+config *.manager.moduleType "\"dronestfg.nodes.UAV\""
 config *.manager.moduleName "\"uav\""
 config *.gnb.mobility.typename StationaryMobility
 config *.gnb.mobility.initialX 1500m
@@ -42,6 +41,7 @@ config *.uav[*].macCellId 1
 config *.uav[*].masterId 1
 config *.uav[*].nrMacCellId 1
 config *.uav[*].nrMasterId 1
+config *.uav[*].ipv4.typename Ipv4NetworkLayer
 config *.uav[*].numApps 1
 config *.uav[*].app[0].typename UdpBasicApp
 config *.uav[*].app[0].destAddresses "\"server\""
@@ -95,4 +95,212 @@ vector 6 DronesNetwork.server.ppp[0].queue queueLength:vector ETV
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode vector
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDrop
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 7 DronesNetwork.server.ppp[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 8 DronesNetwork.server.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 9 DronesNetwork.server.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 10 DronesNetwork.server.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 11 DronesNetwork.server.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 12 DronesNetwork.upf.ppp[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 13 DronesNetwork.upf.ppp[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 14 DronesNetwork.upf.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 15 DronesNetwork.upf.pppIf.queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 16 DronesNetwork.upf.pppIf.queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 17 DronesNetwork.upf.pppIf.ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 18 DronesNetwork.upf.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 19 DronesNetwork.upf.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 20 DronesNetwork.upf.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 21 DronesNetwork.gnb.pppIf.queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 22 DronesNetwork.gnb.pppIf.queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 23 DronesNetwork.gnb.pppIf.ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 24 DronesNetwork.gnb.pppMEHostIf.queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 25 DronesNetwork.gnb.pppMEHostIf.queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 26 DronesNetwork.gnb.pppMEHostIf.ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 27 DronesNetwork.gnb.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 28 DronesNetwork.gnb.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 29 DronesNetwork.gnb.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 30 DronesNetwork.gnb.cellularNic.mac avgServedBlocksUl:vector ETV
+attr recordingmode vector
+attr source avgServedBlocksUl
+attr title "Avg Served Blocks Ul"
+attr unit blocks
+vector 31 DronesNetwork.gnb.cellularNic.mac avgServedBlocksDl:vector ETV
+attr recordingmode vector
+attr source avgServedBlocksDl
+attr title "Avg Served Blocks Dl"
+attr unit blocks
+vector 32 DronesNetwork.uav[0].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 33 DronesNetwork.uav[0].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 34 DronesNetwork.uav[0].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 35 DronesNetwork.uav[0].cellularNic.phy servingCell:vector ETV
+attr recordingmode vector
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE"
+attr unit ""
+vector 36 DronesNetwork.uav[0].cellularNic.nrPhy servingCell:vector ETV
+attr recordingmode vector
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE"
+attr unit ""
+0	11861 40 0 0 0 0 5 0 0 0 0
+1	11901 40 0 0 0 0 5 0 0 0 0
+2	11941 8 0 0 0 0 1 0 0 0 0
+3	11949 40 0 0 0 0 5 0 0 0 0
+4	11989 40 0 0 0 0 5 0 0 0 0
+5	12029 8 0 0 0 0 1 0 0 0 0
+6	12037 40 0 0 0 0 5 0 0 0 0
+7	12077 40 0 0 0 0 5 0 0 0 0
+8	12117 8 0 0 0 0 1 0 0 0 0
+9	12125 8 0 0 0 0 1 0 0 0 0
+10	12133 9 0 0 0 0 1 0 0 0 0
+11	12142 9 0 0 0 0 1 0 0 0 0
+12	12151 45 0 0 0 0 5 0 0 0 0
+13	12196 45 0 0 0 0 5 0 0 0 0
+14	12241 9 0 0 0 0 1 0 0 0 0
+15	12250 45 0 0 0 0 5 0 0 0 0
+16	12295 45 0 0 0 0 5 0 0 0 0
+17	12340 9 0 0 0 0 1 0 0 0 0
+18	12349 9 0 0 0 0 1 0 0 0 0
+19	12358 9 0 0 0 0 1 0 0 0 0
+20	12367 9 0 0 0 0 1 0 0 0 0
+21	12376 45 0 0 0 0 5 0 0 0 0
+22	12421 45 0 0 0 0 5 0 0 0 0
+23	12466 9 0 0 0 0 1 0 0 0 0
+24	12475 45 0 0 0 0 5 0 0 0 0
+25	12520 45 0 0 0 0 5 0 0 0 0
+26	12565 9 0 0 0 0 1 0 0 0 0
+27	12574 9 0 0 0 0 1 0 0 0 0
+28	12583 9 0 0 0 0 1 0 0 0 0
+29	12592 9 0 0 0 0 1 0 0 0 0
+30	12601 15334 9 2006 0.001 0.999 999 0 0 0 0
+31	27935 15334 9 2006 0.001 0.999 999 0 0 0 0
+32	43269 12 2008 2008 1 1 1 0 0 0 0
+33	43281 12 2008 2008 1 1 1 0 0 0 0
+34	43293 12 2008 2008 1 1 1 0 0 0 0
+35	43305 12 2008 2008 1 1 1 1 1 1 1
+36	43317 12 2008 2008 1 1 1 1 1 1 1
+

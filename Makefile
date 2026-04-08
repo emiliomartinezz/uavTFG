@@ -2,7 +2,7 @@
 # OMNeT++/OMNEST Makefile for dronesTFG
 #
 # This file was generated with the command:
-#  opp_makemake -f --deep -O out -KINET_PROJ=/home/emilio/INET/inet -KVEINS_PROJ=/home/emilio/VEINS/veins-5.3.1/veins-veins-5.3.1 -KSIMU5G_PROJ=/home/emilio/omnetpp-6.0.3/samples/simu5g -KVEINS_INET_PROJ=/home/emilio/VEINS/veins-5.3.1/veins-veins-5.3.1/subprojects/veins_inet -DINET_IMPORT -DVEINS_IMPORT -DVEINS_INET_IMPORT -I. -I$$\(INET_PROJ\)/src -I$$\(SIMU5G_PROJ\)/src -I$$\(VEINS_PROJ\)/src -Isrc -I$$\(VEINS_PROJ\)/subprojects/veins_inet/src -L$$\(INET_PROJ\)/src -L$$\(SIMU5G_PROJ\)/src -L$$\(VEINS_PROJ\)/src -L$$\(VEINS_PROJ\)/subprojects/veins_inet/src -lINET$$\(D\) -lsimu5g$$\(D\) -lveins$$\(D\) -lveins_inet$$\(D\)
+#  opp_makemake -f --deep -O out -KINET_PROJ=/home/emilio/INET/inet -KVEINS_PROJ=/home/emilio/VEINS/veins-5.3.1/veins-veins-5.3.1 -KSIMU5G_PROJ=/home/emilio/omnetpp-6.0.3/samples/simu5g -KVEINS_INET_PROJ=/home/emilio/VEINS/veins-5.3.1/veins_inet -DINET_IMPORT -DVEINS_IMPORT -DVEINS_INET_IMPORT -I. -I$$\(INET_PROJ\)/src -I$$\(SIMU5G_PROJ\)/src -I$$\(VEINS_PROJ\)/src -Isrc -I$$\(VEINS_INET_PROJ\)/src -L$$\(INET_PROJ\)/src -L$$\(SIMU5G_PROJ\)/src -L$$\(VEINS_PROJ\)/src -L$$\(VEINS_INET_PROJ\)/src -lINET$$\(D\) -lsimu5g$$\(D\) -lveins$$\(D\) -lveins_inet$$\(D\)
 #
 
 # Name of target to be created (-o option)
@@ -25,13 +25,13 @@ INCLUDE_PATH = \
     -I$(SIMU5G_PROJ)/src \
     -I$(VEINS_PROJ)/src \
     -Isrc \
-    -I$(VEINS_PROJ)/subprojects/veins_inet/src
+    -I$(VEINS_INET_PROJ)/src
 
 # Additional object and library files to link with
 EXTRA_OBJS =
 
 # Additional libraries (-L, -l options)
-LIBS = $(LDFLAG_LIBPATH)$(INET_PROJ)/src $(LDFLAG_LIBPATH)$(SIMU5G_PROJ)/src $(LDFLAG_LIBPATH)$(VEINS_PROJ)/src $(LDFLAG_LIBPATH)$(VEINS_PROJ)/subprojects/veins_inet/src  -lINET$(D) -lsimu5g$(D) -lveins$(D) -lveins_inet$(D)
+LIBS = $(LDFLAG_LIBPATH)$(INET_PROJ)/src $(LDFLAG_LIBPATH)$(SIMU5G_PROJ)/src $(LDFLAG_LIBPATH)$(VEINS_PROJ)/src $(LDFLAG_LIBPATH)$(VEINS_INET_PROJ)/src  -lINET$(D) -lsimu5g$(D) -lveins$(D) -lveins_inet$(D)
 
 # Output directory
 PROJECT_OUTPUT_DIR = out
@@ -51,7 +51,7 @@ SMFILES =
 INET_PROJ=/home/emilio/INET/inet
 VEINS_PROJ=/home/emilio/VEINS/veins-5.3.1/veins-veins-5.3.1
 SIMU5G_PROJ=/home/emilio/omnetpp-6.0.3/samples/simu5g
-VEINS_INET_PROJ=/home/emilio/VEINS/veins-5.3.1/veins-veins-5.3.1/subprojects/veins_inet
+VEINS_INET_PROJ=/home/emilio/VEINS/veins-5.3.1/veins_inet
 
 #------------------------------------------------------------------------------
 
@@ -72,7 +72,7 @@ include $(CONFIGFILE)
 # Simulation kernel and user interface libraries
 OMNETPP_LIBS = $(OPPMAIN_LIB) $(USERIF_LIBS) $(KERNEL_LIBS) $(SYS_LIBS)
 ifneq ($(PLATFORM),win32)
-LIBS += -Wl,-rpath,$(abspath $(INET_PROJ)/src) -Wl,-rpath,$(abspath $(SIMU5G_PROJ)/src) -Wl,-rpath,$(abspath $(VEINS_PROJ)/src) -Wl,-rpath,$(abspath $(VEINS_PROJ)/subprojects/veins_inet/src)
+LIBS += -Wl,-rpath,$(abspath $(INET_PROJ)/src) -Wl,-rpath,$(abspath $(SIMU5G_PROJ)/src) -Wl,-rpath,$(abspath $(VEINS_PROJ)/src) -Wl,-rpath,$(abspath $(VEINS_INET_PROJ)/src)
 endif
 
 COPTS = $(CFLAGS) $(IMPORT_DEFINES) -DINET_IMPORT -DVEINS_IMPORT -DVEINS_INET_IMPORT $(INCLUDE_PATH) -I$(OMNETPP_INCL_DIR)

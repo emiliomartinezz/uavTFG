@@ -17,13 +17,13 @@ package dronestfg.nodes;
 
 
 import simu5g.nodes.NR.NRUe;
-import org.car2x.veins.modules.mobility.traci.TraCIMobility;
+import org.car2x.veins.subprojects.veins_inet.VeinsInetMobility;
 
 module UAV extends NRUe
 {
     parameters:
-        mobility.typename = "org.car2x.veins.modules.mobility.traci.TraCIMobility";
-        @display("i=block/aircraft");
+        mobility.typename = "org.car2x.veins.subprojects.veins_inet.VeinsInetMobility";
+        @display("i=block/bucket");
 
 }
 
