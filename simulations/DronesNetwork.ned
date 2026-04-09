@@ -29,6 +29,11 @@ import simu5g.nodes.Upf;
 import org.car2x.veins.modules.mobility.traci.TraCIScenarioManager;
 import dronestfg.nodes.UAV;
 
+package dronestfg.simulations;
+
+import org.car2x.veins.modules.mobility.traci.TraCIScenarioManager;
+import dronestfg.nodes.UAV;
+
 network DronesNetwork
 {
     parameters:
@@ -43,46 +48,11 @@ network DronesNetwork
                 @display("p=50,50");
         }
 
-        channelControl: LteChannelControl {
-            @display("p=100,150;is=s");
-        }
-
-        binder: Binder {
-            @display("p=100,250;is=s");
-        }
-
-        carrierAggregation: CarrierAggregation {
-            @display("p=100,350;is=s");
-        }
-
-        configurator: Ipv4NetworkConfigurator {
-            @display("p=100,450;is=s");
-        }
-
-        router: Router {
-            @display("p=500,100;is=s");
-        }
-
-        server: StandardHost {
-            @display("p=700,100;is=s");
-        }
-
-        upf: Upf {
-            @display("p=500,250;is=s");
-        }
-
-        gnb: gNodeB {
-            @display("p=500,400;is=l");
-        }
-
         uav[0]: UAV {
-            parameters:
-                @display("p=228.52126,211.03876");
+            @display("p=200,200");
         }
-
-    connections:
-        server.pppg++ <--> {  datarate = 10Gbps; delay = 1ms; } <--> router.pppg++;
-        router.pppg++ <--> {  datarate = 10Gbps; delay = 1ms; } <--> upf.filterGate;
-        upf.pppg++ <--> {  datarate = 10Gbps; delay = 1ms; } <--> gnb.ppp;
+        car[0]: UAV {
+            parameters:
+                @display("p=300,300");
+        }
 }
-

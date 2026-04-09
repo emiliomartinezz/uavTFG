@@ -1,0 +1,203 @@
+version 3
+run General-0-20260409-12:07:12-56810
+attr configname General
+attr datetime 20260409-12:07:12
+attr datetimef 20260409-120712
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network dronestfg.simulations.DronesNetwork
+attr processid 56810
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../../INET/inet/images:../../../VEINS/veins-5.3.1/veins-veins-5.3.1/images:../../../omnetpp-6.0.3/samples/simu5g/images:../../../VEINS/veins-5.3.1/veins_inet/images
+config network dronestfg.simulations.DronesNetwork
+config sim-time-limit 4000s
+config *.playgroundSizeX 1500m
+config *.playgroundSizeY 1300m
+config *.playgroundSizeZ 500m
+config *.manager.margin 50
+config *.manager.host "\"localhost\""
+config *.manager.port 9999
+config *.manager.updateInterval 1s
+config *.manager.autoShutdown true
+config *.manager.order 1
+config *.manager.moduleType "\"uav_type=dronestfg.nodes.UAV car_type=dronestfg.nodes.UAV\""
+config *.manager.moduleName "\"uav_type=uav car_type=car\""
+config *.manager.moduleDisplayString "\"uav_type='i=block/aircraft' car_type='i=block/process'\""
+
+par DronesNetwork.car[13].mobility typename "\"org.car2x.veins.subprojects.veins_inet.VeinsInetMobility\""
+par DronesNetwork.car[13].mobility subjectModule "\"^\""
+par DronesNetwork.car[13].mobility coordinateSystemModule "\"\""
+par DronesNetwork.car[13].mobility displayStringTextFormat "\"p: %p\\nv: %v\""
+attr mutable ""
+par DronesNetwork.car[13].mobility updateDisplayString true
+par DronesNetwork.car[13].mobility constraintAreaMinX "-inf m"
+attr unit m
+par DronesNetwork.car[13].mobility constraintAreaMinY "-inf m"
+attr unit m
+par DronesNetwork.car[13].mobility constraintAreaMinZ "-inf m"
+attr unit m
+par DronesNetwork.car[13].mobility constraintAreaMaxX "inf m"
+attr unit m
+par DronesNetwork.car[13].mobility constraintAreaMaxY "inf m"
+attr unit m
+par DronesNetwork.car[13].mobility constraintAreaMaxZ "inf m"
+attr unit m
+par DronesNetwork.car[13].mobility initFromDisplayString true
+par DronesNetwork.car[13] typename "\"dronestfg.nodes.UAV\""
+par DronesNetwork.car[13] mobilityType "\"org.car2x.veins.subprojects.veins_inet.VeinsInetMobility\""
+par DronesNetwork.car[11].mobility typename "\"org.car2x.veins.subprojects.veins_inet.VeinsInetMobility\""
+par DronesNetwork.car[11].mobility subjectModule "\"^\""
+par DronesNetwork.car[11].mobility coordinateSystemModule "\"\""
+par DronesNetwork.car[11].mobility displayStringTextFormat "\"p: %p\\nv: %v\""
+attr mutable ""
+par DronesNetwork.car[11].mobility updateDisplayString true
+par DronesNetwork.car[11].mobility constraintAreaMinX "-inf m"
+attr unit m
+par DronesNetwork.car[11].mobility constraintAreaMinY "-inf m"
+attr unit m
+par DronesNetwork.car[11].mobility constraintAreaMinZ "-inf m"
+attr unit m
+par DronesNetwork.car[11].mobility constraintAreaMaxX "inf m"
+attr unit m
+par DronesNetwork.car[11].mobility constraintAreaMaxY "inf m"
+attr unit m
+par DronesNetwork.car[11].mobility constraintAreaMaxZ "inf m"
+attr unit m
+par DronesNetwork.car[11].mobility initFromDisplayString true
+par DronesNetwork.car[11] typename "\"dronestfg.nodes.UAV\""
+par DronesNetwork.car[11] mobilityType "\"org.car2x.veins.subprojects.veins_inet.VeinsInetMobility\""
+par DronesNetwork.car[8].mobility typename "\"org.car2x.veins.subprojects.veins_inet.VeinsInetMobility\""
+par DronesNetwork.car[8].mobility subjectModule "\"^\""
+par DronesNetwork.car[8].mobility coordinateSystemModule "\"\""
+par DronesNetwork.car[8].mobility displayStringTextFormat "\"p: %p\\nv: %v\""
+attr mutable ""
+par DronesNetwork.car[8].mobility updateDisplayString true
+par DronesNetwork.car[8].mobility constraintAreaMinX "-inf m"
+attr unit m
+par DronesNetwork.car[8].mobility constraintAreaMinY "-inf m"
+attr unit m
+par DronesNetwork.car[8].mobility constraintAreaMinZ "-inf m"
+attr unit m
+par DronesNetwork.car[8].mobility constraintAreaMaxX "inf m"
+attr unit m
+par DronesNetwork.car[8].mobility constraintAreaMaxY "inf m"
+attr unit m
+par DronesNetwork.car[8].mobility constraintAreaMaxZ "inf m"
+attr unit m
+par DronesNetwork.car[8].mobility initFromDisplayString true
+par DronesNetwork.car[8] typename "\"dronestfg.nodes.UAV\""
+par DronesNetwork.car[8] mobilityType "\"org.car2x.veins.subprojects.veins_inet.VeinsInetMobility\""
+par DronesNetwork.car[12].mobility typename "\"org.car2x.veins.subprojects.veins_inet.VeinsInetMobility\""
+par DronesNetwork.car[12].mobility subjectModule "\"^\""
+par DronesNetwork.car[12].mobility coordinateSystemModule "\"\""
+par DronesNetwork.car[12].mobility displayStringTextFormat "\"p: %p\\nv: %v\""
+attr mutable ""
+par DronesNetwork.car[12].mobility updateDisplayString true
+par DronesNetwork.car[12].mobility constraintAreaMinX "-inf m"
+attr unit m
+par DronesNetwork.car[12].mobility constraintAreaMinY "-inf m"
+attr unit m
+par DronesNetwork.car[12].mobility constraintAreaMinZ "-inf m"
+attr unit m
+par DronesNetwork.car[12].mobility constraintAreaMaxX "inf m"
+attr unit m
+par DronesNetwork.car[12].mobility constraintAreaMaxY "inf m"
+attr unit m
+par DronesNetwork.car[12].mobility constraintAreaMaxZ "inf m"
+attr unit m
+par DronesNetwork.car[12].mobility initFromDisplayString true
+par DronesNetwork.car[12] typename "\"dronestfg.nodes.UAV\""
+par DronesNetwork.car[12] mobilityType "\"org.car2x.veins.subprojects.veins_inet.VeinsInetMobility\""
+par DronesNetwork.car[18].mobility typename "\"org.car2x.veins.subprojects.veins_inet.VeinsInetMobility\""
+par DronesNetwork.car[18].mobility subjectModule "\"^\""
+par DronesNetwork.car[18].mobility coordinateSystemModule "\"\""
+par DronesNetwork.car[18].mobility displayStringTextFormat "\"p: %p\\nv: %v\""
+attr mutable ""
+par DronesNetwork.car[18].mobility updateDisplayString true
+par DronesNetwork.car[18].mobility constraintAreaMinX "-inf m"
+attr unit m
+par DronesNetwork.car[18].mobility constraintAreaMinY "-inf m"
+attr unit m
+par DronesNetwork.car[18].mobility constraintAreaMinZ "-inf m"
+attr unit m
+par DronesNetwork.car[18].mobility constraintAreaMaxX "inf m"
+attr unit m
+par DronesNetwork.car[18].mobility constraintAreaMaxY "inf m"
+attr unit m
+par DronesNetwork.car[18].mobility constraintAreaMaxZ "inf m"
+attr unit m
+par DronesNetwork.car[18].mobility initFromDisplayString true
+par DronesNetwork.car[18] typename "\"dronestfg.nodes.UAV\""
+par DronesNetwork.car[18] mobilityType "\"org.car2x.veins.subprojects.veins_inet.VeinsInetMobility\""
+par DronesNetwork.car[14].mobility typename "\"org.car2x.veins.subprojects.veins_inet.VeinsInetMobility\""
+par DronesNetwork.car[14].mobility subjectModule "\"^\""
+par DronesNetwork.car[14].mobility coordinateSystemModule "\"\""
+par DronesNetwork.car[14].mobility displayStringTextFormat "\"p: %p\\nv: %v\""
+attr mutable ""
+par DronesNetwork.car[14].mobility updateDisplayString true
+par DronesNetwork.car[14].mobility constraintAreaMinX "-inf m"
+attr unit m
+par DronesNetwork.car[14].mobility constraintAreaMinY "-inf m"
+attr unit m
+par DronesNetwork.car[14].mobility constraintAreaMinZ "-inf m"
+attr unit m
+par DronesNetwork.car[14].mobility constraintAreaMaxX "inf m"
+attr unit m
+par DronesNetwork.car[14].mobility constraintAreaMaxY "inf m"
+attr unit m
+par DronesNetwork.car[14].mobility constraintAreaMaxZ "inf m"
+attr unit m
+par DronesNetwork.car[14].mobility initFromDisplayString true
+par DronesNetwork.car[14] typename "\"dronestfg.nodes.UAV\""
+par DronesNetwork.car[14] mobilityType "\"org.car2x.veins.subprojects.veins_inet.VeinsInetMobility\""
+par DronesNetwork.car[16].mobility typename "\"org.car2x.veins.subprojects.veins_inet.VeinsInetMobility\""
+par DronesNetwork.car[16].mobility subjectModule "\"^\""
+par DronesNetwork.car[16].mobility coordinateSystemModule "\"\""
+par DronesNetwork.car[16].mobility displayStringTextFormat "\"p: %p\\nv: %v\""
+attr mutable ""
+par DronesNetwork.car[16].mobility updateDisplayString true
+par DronesNetwork.car[16].mobility constraintAreaMinX "-inf m"
+attr unit m
+par DronesNetwork.car[16].mobility constraintAreaMinY "-inf m"
+attr unit m
+par DronesNetwork.car[16].mobility constraintAreaMinZ "-inf m"
+attr unit m
+par DronesNetwork.car[16].mobility constraintAreaMaxX "inf m"
+attr unit m
+par DronesNetwork.car[16].mobility constraintAreaMaxY "inf m"
+attr unit m
+par DronesNetwork.car[16].mobility constraintAreaMaxZ "inf m"
+attr unit m
+par DronesNetwork.car[16].mobility initFromDisplayString true
+par DronesNetwork.car[16] typename "\"dronestfg.nodes.UAV\""
+par DronesNetwork.car[16] mobilityType "\"org.car2x.veins.subprojects.veins_inet.VeinsInetMobility\""
+par DronesNetwork.car[15].mobility typename "\"org.car2x.veins.subprojects.veins_inet.VeinsInetMobility\""
+par DronesNetwork.car[15].mobility subjectModule "\"^\""
+par DronesNetwork.car[15].mobility coordinateSystemModule "\"\""
+par DronesNetwork.car[15].mobility displayStringTextFormat "\"p: %p\\nv: %v\""
+attr mutable ""
+par DronesNetwork.car[15].mobility updateDisplayString true
+par DronesNetwork.car[15].mobility constraintAreaMinX "-inf m"
+attr unit m
+par DronesNetwork.car[15].mobility constraintAreaMinY "-inf m"
+attr unit m
+par DronesNetwork.car[15].mobility constraintAreaMinZ "-inf m"
+attr unit m
+par DronesNetwork.car[15].mobility constraintAreaMaxX "inf m"
+attr unit m
+par DronesNetwork.car[15].mobility constraintAreaMaxY "inf m"
+attr unit m
+par DronesNetwork.car[15].mobility constraintAreaMaxZ "inf m"
+attr unit m
+par DronesNetwork.car[15].mobility initFromDisplayString true
+par DronesNetwork.car[15] typename "\"dronestfg.nodes.UAV\""
+par DronesNetwork.car[15] mobilityType "\"org.car2x.veins.subprojects.veins_inet.VeinsInetMobility\""
+

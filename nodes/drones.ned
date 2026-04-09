@@ -15,15 +15,17 @@
 
 package dronestfg.nodes;
 
+import inet.mobility.contract.IMobility;
 
-import simu5g.nodes.NR.NRUe;
-import org.car2x.veins.subprojects.veins_inet.VeinsInetMobility;
-
-module UAV extends NRUe
+module UAV
 {
     parameters:
-        mobility.typename = "org.car2x.veins.subprojects.veins_inet.VeinsInetMobility";
-        @display("i=block/bucket");
+        @display("i=block/aircraft");
+        @networkNode;
+        string mobilityType = default("org.car2x.veins.subprojects.veins_inet.VeinsInetMobility");
 
+    submodules:
+        mobility: <mobilityType> like IMobility {
+            @display("p=50,50");
+        }
 }
-
