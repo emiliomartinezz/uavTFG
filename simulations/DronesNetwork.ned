@@ -15,23 +15,9 @@
 
 package dronestfg.simulations;
 
-//
-// TODO auto-generated type
-//
-import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
-import inet.node.inet.Router;
-import inet.node.inet.StandardHost;
-import simu5g.world.radio.LteChannelControl;
-import simu5g.common.carrierAggregation.CarrierAggregation;
-import simu5g.nodes.NR.gNodeB;
-import simu5g.common.binder.Binder;
-import simu5g.nodes.Upf;
-import org.car2x.veins.modules.mobility.traci.TraCIScenarioManager;
-import dronestfg.nodes.UAV;
 
-package dronestfg.simulations;
 
-import org.car2x.veins.modules.mobility.traci.TraCIScenarioManager;
+import org.car2x.veins.subprojects.veins_inet.VeinsInetManager;
 import dronestfg.nodes.UAV;
 
 network DronesNetwork
@@ -43,7 +29,7 @@ network DronesNetwork
         @display("bgb=995,607");
 
     submodules:
-        manager: TraCIScenarioManager {
+        manager: VeinsInetManager {
             parameters:
                 @display("p=50,50");
         }
