@@ -18,7 +18,9 @@ package dronestfg.simulations;
 
 
 import org.car2x.veins.subprojects.veins_inet.VeinsInetManager;
+import org.car2x.veins.visualizer.roads.RoadsCanvasVisualizer;
 import dronestfg.nodes.UAV;
+
 
 network DronesNetwork
 {
@@ -26,19 +28,24 @@ network DronesNetwork
         double playgroundSizeX @unit(m);
         double playgroundSizeY @unit(m);
         double playgroundSizeZ @unit(m);
-        @display("bgb=995,607");
-
+        @display("bgb=1500,1300");
     submodules:
         manager: VeinsInetManager {
             parameters:
                 @display("p=50,50");
         }
+        
+        roaddsVisualizer: RoadsCanvasVisualizer {
+            parameters:
+                @display("p= 100,100");
+        }
+        
 
         uav[0]: UAV {
             @display("p=200,200");
         }
         car[0]: UAV {
-            parameters:
-                @display("p=300,300");
+           parameters:
+                @display("p=-1000,-1000;is=vs");
         }
 }
